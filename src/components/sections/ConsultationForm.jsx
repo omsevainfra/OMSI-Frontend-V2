@@ -1,44 +1,52 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle2, PhoneCall, Calendar } from 'lucide-react';
+import { Send, CheckCircle2, PhoneCall, Calendar, AlertCircle } from 'lucide-react';
 import { Button } from '../ui/Button';
+import { publicApi } from '../../lib/publicApi';
 
 export function ConsultationForm() {
   const [formData, setFormData] = useState({
     fullName: '',
-    phone: '',
-    email: '',
-    organisation: '',
+    phoneNumber: '',
+    emailAddress: '',
+    organisationName: '',
     enquiryType: 'Consultancy',
     description: '',
-    preferredTime: 'Morning (9 AM - 12 PM)'
+    preferredContactTime: 'Morning (9 AM - 12 PM)'
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    // Simulate API submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setError('');
+    try {
+      await publicApi.post('/feedback/createResponse', formData);
       setIsSuccess(true);
       setFormData({
         fullName: '',
-        phone: '',
-        email: '',
-        organisation: '',
+        phoneNumber: '',
+        emailAddress: '',
+        organisationName: '',
         enquiryType: 'Consultancy',
         description: '',
-        preferredTime: 'Morning (9 AM - 12 PM)'
+        preferredContactTime: 'Morning (9 AM - 12 PM)'
       });
-    }, 1200);
+    } catch (err) {
+      setError(
+        err.response?.data?.message ||
+        'Something went wrong. Please try again or call us directly.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -145,9 +153,9 @@ export function ConsultationForm() {
                     <input
                       type="tel"
                       id="phone"
-                      name="phone"
+                      name="phoneNumber"
                       required
-                      value={formData.phone}
+                      value={formData.phoneNumber}
                       onChange={handleChange}
                       placeholder="e.g. +91 98765 43210"
                       className="px-4 py-3 border border-brand-border rounded-lg text-sm font-body text-brand-black focus:outline-none focus:border-brand-green transition-colors bg-brand-bg/30"
@@ -164,9 +172,9 @@ export function ConsultationForm() {
                     <input
                       type="email"
                       id="email"
-                      name="email"
+                      name="emailAddress"
                       required
-                      value={formData.email}
+                      value={formData.emailAddress}
                       onChange={handleChange}
                       placeholder="e.g. rajesh@organization.org"
                       className="px-4 py-3 border border-brand-border rounded-lg text-sm font-body text-brand-black focus:outline-none focus:border-brand-green transition-colors bg-brand-bg/30"
@@ -181,8 +189,8 @@ export function ConsultationForm() {
                     <input
                       type="text"
                       id="organisation"
-                      name="organisation"
-                      value={formData.organisation}
+                      name="organisationName"
+                      value={formData.organisationName}
                       onChange={handleChange}
                       placeholder="e.g. PWD Maharashtra / Private Developer"
                       className="px-4 py-3 border border-brand-border rounded-lg text-sm font-body text-brand-black focus:outline-none focus:border-brand-green transition-colors bg-brand-bg/30"
@@ -218,8 +226,8 @@ export function ConsultationForm() {
                     </label>
                     <select
                       id="preferredTime"
-                      name="preferredTime"
-                      value={formData.preferredTime}
+                      name="preferredContactTime"
+                      value={formData.preferredContactTime}
                       onChange={handleChange}
                       className="px-4 py-3 border border-brand-border rounded-lg text-sm font-body text-brand-black focus:outline-none focus:border-brand-green bg-white transition-colors cursor-pointer"
                     >
@@ -248,6 +256,13 @@ export function ConsultationForm() {
                 </div>
 
                 {/* Submit button */}
+                {error && (
+                  <div className="flex items-start gap-2 p-3 bg-red-50 border border-red-200 rounded-lg text-sm font-body text-red-700">
+                    <AlertCircle size={16} className="shrink-0 mt-0.5" />
+                    {error}
+                  </div>
+                )}
+
                 <Button
                   type="submit"
                   disabled={isSubmitting}

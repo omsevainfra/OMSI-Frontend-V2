@@ -149,3 +149,40 @@ html {
   color: #1A1A1A;
   font-weight: 700;
 }
+
+/* Job Detail — Markdown description prose */
+.job-prose p {
+  margin-bottom: 1.1rem;
+  line-height: 1.75;
+  color: #4A4A4A;
+  font-size: 0.95rem;
+}
+
+.job-prose h2, .job-prose h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.job-prose h2 { font-size: 1.4rem; }
+.job-prose h3 { font-size: 1.15rem; }
+
+.job-prose ul, .job-prose ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.1rem;
+}
+
+.job-prose ul { list-style-type: disc; }
+.job-prose ol { list-style-type: decimal; }
+
+.job-prose li {
+  margin-bottom: 0.4rem;
+  line-height: 1.65;
+  color: #4A4A4A;
+  font-size: 0.95rem;
+}
+
+.job-prose strong { color: #1A1A1A; font-weight: 700; }
+.job-prose em { font-style: italic; }

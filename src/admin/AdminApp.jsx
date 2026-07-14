@@ -14,6 +14,9 @@ import { EditProjectPage } from './pages/projects/EditProjectPage';
 import { EmployeesPage } from './pages/employees/EmployeesPage';
 import { CreateEmployeePage } from './pages/employees/CreateEmployeePage';
 import { FeedbackPage } from './pages/feedback/FeedbackPage';
+import { JobsPage } from './pages/jobs/JobsPage';
+import { CreateJobPage } from './pages/jobs/CreateJobPage';
+import { EditJobPage } from './pages/jobs/EditJobPage';
 
 /**
  * Page title map — keyed by route pattern
@@ -125,6 +128,34 @@ export function AdminApp() {
             }
           >
             <Route index element={<FeedbackPage />} />
+          </Route>
+
+          {/* Jobs */}
+          <Route
+            path="jobs"
+            element={
+              <ProtectedRoute>
+                <ShellWithTitle title="Jobs" />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<JobsPage />} />
+            <Route
+              path="create"
+              element={
+                <ProtectedRoute allowedRoles={['ADMIN', 'RECRUITER']}>
+                  <CreateJobPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path=":jobId/edit"
+              element={
+                <ProtectedRoute allowedRoles={['ADMIN', 'RECRUITER']}>
+                  <EditJobPage />
+                </ProtectedRoute>
+              }
+            />
           </Route>
 
           {/* Default: redirect /admin → /osi-console/dashboard */}

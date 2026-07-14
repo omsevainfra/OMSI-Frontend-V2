@@ -15,7 +15,7 @@ export function SplashScreen({ onComplete }) {
     sessionStorage.getItem(STORAGE_KEY) ? 'done' : 'enter'
   );
   const timersRef = useRef([]);
-  const startedRef = useRef(false);
+  const finishRef = useRef(null);
 
   const finish = useCallback(() => {
     timersRef.current.forEach(clearTimeout);
@@ -26,36 +26,46 @@ export function SplashScreen({ onComplete }) {
     onComplete?.();
   }, [onComplete]);
 
+  // Keep a ref to finish so timers can call the latest version
+  finishRef.current = finish;
+
+  /** Allow tapping/clicking to skip early */
   const dismiss = useCallback(() => {
     timersRef.current.forEach(clearTimeout);
     timersRef.current = [];
     setPhase('exit');
-    const doneTimer = setTimeout(finish, FADE_MS);
+    const doneTimer = setTimeout(() => finishRef.current?.(), FADE_MS);
     timersRef.current = [doneTimer];
-  }, [finish]);
+  }, []);
 
   useEffect(() => {
-    if (phase === 'done') return;
-    if (startedRef.current) return;
-    startedRef.current = true;
-
+    // Already shown this session — skip immediately
     if (sessionStorage.getItem(STORAGE_KEY)) {
-      finish();
+      finishRef.current?.();
       return;
     }
 
+    let cancelled = false;
     document.body.style.overflow = 'hidden';
 
-    const exitTimer = setTimeout(() => setPhase('exit'), DISPLAY_MS);
-    const doneTimer = setTimeout(dismiss, DISPLAY_MS + FADE_MS);
+    const exitTimer = setTimeout(() => {
+      if (!cancelled) setPhase('exit');
+    }, DISPLAY_MS);
+
+    const doneTimer = setTimeout(() => {
+      if (!cancelled) finishRef.current?.();
+    }, DISPLAY_MS + FADE_MS);
+
     timersRef.current = [exitTimer, doneTimer];
 
     return () => {
-      timersRef.current.forEach(clearTimeout);
-      timersRef.current = [];
+      cancelled = true;
+      clearTimeout(exitTimer);
+      clearTimeout(doneTimer);
       document.body.style.overflow = '';
     };
-  }, [dismiss, finish, phase]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (phase === 'done') return null;
 

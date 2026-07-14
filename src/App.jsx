@@ -15,6 +15,7 @@ import { ProjectDetail } from './pages/ProjectDetail';
 import { Team } from './pages/Team';
 import { TeamDetail } from './pages/TeamDetail';
 import { Careers } from './pages/Careers';
+import { JobDetail } from './pages/JobDetail';
 import { Blog } from './pages/Blog';
 import { BlogDetail } from './pages/BlogDetail';
 import { Contact } from './pages/Contact';
@@ -60,6 +61,7 @@ function App() {
                     <Route path="/team" element={<Team />} />
                     <Route path="/team/:id" element={<TeamDetail />} />
                     <Route path="/careers" element={<Careers />} />
+                    <Route path="/careers/:id" element={<JobDetail />} />
                     <Route path="/blog" element={<Blog />} />
                     <Route path="/blog/:slug" element={<BlogDetail />} />
                     <Route path="/contact" element={<Contact />} />
