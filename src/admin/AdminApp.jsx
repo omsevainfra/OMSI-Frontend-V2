@@ -17,6 +17,7 @@ import { FeedbackPage } from './pages/feedback/FeedbackPage';
 import { JobsPage } from './pages/jobs/JobsPage';
 import { CreateJobPage } from './pages/jobs/CreateJobPage';
 import { EditJobPage } from './pages/jobs/EditJobPage';
+import { ApplicationsPage } from './pages/applications/ApplicationsPage';
 
 /**
  * Page title map — keyed by route pattern
@@ -156,6 +157,18 @@ export function AdminApp() {
                 </ProtectedRoute>
               }
             />
+          </Route>
+
+          {/* Applications */}
+          <Route
+            path="applications"
+            element={
+              <ProtectedRoute allowedRoles={['SUPERADMIN', 'ADMIN', 'RECRUITER']}>
+                <ShellWithTitle title="Applications" />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<ApplicationsPage />} />
           </Route>
 
           {/* Default: redirect /admin → /osi-console/dashboard */}

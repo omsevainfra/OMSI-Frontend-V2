@@ -1,5 +1,5 @@
 import React from 'react';
-import { Target, Shield, Heart, ShieldAlert, Award, FileSpreadsheet, Hourglass, Landmark, CheckCircle } from 'lucide-react';
+import { Target, Shield, Heart, ShieldAlert, Award, FileSpreadsheet, Hourglass, Landmark, CheckCircle, BookOpen, Scale } from 'lucide-react';
 import { SectionHeader } from '../components/ui/SectionHeader';
 import { Card } from '../components/ui/Card';
 
@@ -63,6 +63,39 @@ export function About() {
     "Jal Jeevan Mission Lead Execution Contractor"
   ];
 
+  const standards = [
+    {
+      code: "IRC SP41:1994",
+      title: "At-Grade Intersections",
+      desc: "Our primary standard for all urban and rural intersection geometry design, sight-distance calculation, and channelisation."
+    },
+    {
+      code: "IRC SP:88-2019",
+      title: "Road Safety Audit",
+      desc: "Governs our stage-wise Road Safety Audit methodology — from Inception Report through Final RSA Report with rectification plan."
+    },
+    {
+      code: "URDPFI Guidelines",
+      title: "Urban Road Design",
+      desc: "Urban Road Development Planning & Framework of India — applied for urban corridor studies, pedestrian design, and land use integration."
+    },
+    {
+      code: "MoRTH Specifications",
+      title: "Road & Bridge Works",
+      desc: "Ministry of Road Transport & Highways specifications used for survey methodology, pavement design, and material standards."
+    },
+    {
+      code: "DIMTS Methodology",
+      title: "Urban Traffic Studies",
+      desc: "Delhi Integrated Multi-Modal Transit System methodology for traffic data collection, analysis, and modelling in urban contexts."
+    },
+    {
+      code: "MCGM Engineering Hub",
+      title: "Mumbai Urban Roads",
+      desc: "Brihanmumbai Municipal Corporation Engineering Hub provisions applied to all intersection designs within Mumbai's jurisdiction."
+    }
+  ];
+
   return (
     <div className="flex flex-col w-full">
       {/* 1. Page Hero Banner */}
@@ -88,17 +121,17 @@ export function About() {
                 Our Foundation
               </span>
               <h2 className="text-3xl font-bold font-display text-brand-black">
-                Om Seva Design & Build Pvt. Ltd.
+                Om Seva Design &amp; Build Pvt. Ltd.
               </h2>
               <p className="font-body text-sm md:text-base text-brand-gray leading-relaxed">
-                Established with the vision of offering high-integrity engineering consultancy and Class-1 contracting services, Om Seva Design & Build has become a trusted partner for government bodies, municipal corporations, and private infrastructure companies in Maharashtra.
+                Established with the vision of offering high-integrity engineering consultancy and Class-1 contracting services, Om Seva Design &amp; Build has become a trusted partner for government bodies, municipal corporations, and private infrastructure companies in Maharashtra.
               </p>
               <p className="font-body text-sm md:text-base text-brand-gray leading-relaxed">
                 By combining the deep academic expertise of our directors—possessing IIT certifications and advanced postgraduate degrees in Structural and Transportation Engineering—with 30+ years of active field project supervision, we deliver engineering works that are technically superior, cost-effective, and fully compliant with Indian Standards (IS) and IRC codes.
               </p>
             </div>
             
-            {/* Image Placeholder */}
+            {/* Image */}
             <div className="lg:col-span-5 h-[350px] rounded-xl overflow-hidden shadow-md border border-brand-border">
               <img 
                 src="https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&q=80&w=800&h=600" 
@@ -193,7 +226,55 @@ export function About() {
         </div>
       </section>
 
-      {/* 6. Registrations & Certifications */}
+      {/* 6. Our Philosophy — RSA Mission Language */}
+      <section className="py-14 bg-white border-t border-brand-border/40">
+        <div className="px-4 md:px-8 lg:px-16 max-w-5xl mx-auto">
+          <div className="flex items-start gap-6 bg-brand-bg/60 border border-brand-green/20 rounded-xl p-8 md:p-10 shadow-sm">
+            <div className="w-12 h-12 bg-brand-green/10 rounded-lg flex items-center justify-center shrink-0 mt-1">
+              <BookOpen size={24} className="text-brand-green" />
+            </div>
+            <div>
+              <span className="text-xs font-bold tracking-widest text-brand-green uppercase block mb-3 font-body">
+                Our Philosophy
+              </span>
+              <blockquote className="font-display text-xl md:text-2xl font-bold text-brand-black leading-snug mb-4 border-l-4 border-brand-green pl-5">
+                "We believe in preventing accidents rather than merely reducing them — designing urban roads that actively protect vulnerable road users: pedestrians, cyclists, and two-wheeler riders."
+              </blockquote>
+              <p className="font-body text-sm text-brand-gray leading-relaxed">
+                This distinction drives every Road Safety Audit we conduct and every intersection we design. A VRU-safe road is not a concession — it is the hallmark of a well-engineered corridor.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Standards & Compliance */}
+      <section className="py-16 md:py-24 bg-brand-bg/50 border-t border-brand-border/40">
+        <div className="px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
+          <SectionHeader
+            tag="Methodology"
+            title="Our Standards & Compliance"
+            subtitle="Every study, design, and audit we deliver is anchored in the following authoritative codes and frameworks."
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {standards.map((s, idx) => (
+              <div
+                key={idx}
+                className="bg-white border border-brand-border/70 rounded-xl p-6 hover:border-brand-green/40 hover:shadow-sm transition-all duration-200"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <Scale size={16} className="text-brand-green shrink-0" />
+                  <span className="font-display font-bold text-xs text-brand-green uppercase tracking-wider">{s.code}</span>
+                </div>
+                <h4 className="font-display font-bold text-base text-brand-black mb-1">{s.title}</h4>
+                <p className="font-body text-xs text-brand-gray leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. Registrations & Certifications */}
       <section className="py-16 md:py-24 bg-white border-t border-brand-border/40">
         <div className="px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -203,7 +284,7 @@ export function About() {
                 Liaison & Qualifications
               </span>
               <h2 className="text-3xl font-bold font-display text-brand-black mb-4">
-                Government Registrations & Certifications
+                Government Registrations &amp; Certifications
               </h2>
               <p className="font-body text-sm text-brand-gray leading-relaxed mb-6">
                 To work on public infrastructure, strict statutory clearances and licenses are required. Om Seva is registered and recognized by several premier public departments in India, validating our engineering standards.

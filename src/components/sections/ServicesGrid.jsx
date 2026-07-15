@@ -35,7 +35,7 @@ export function ServicesGrid({ limit = false, showHeader = true }) {
           />
         )}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className={`grid grid-cols-1 gap-8 ${limit ? 'sm:grid-cols-2' : 'sm:grid-cols-2 lg:grid-cols-3'}`}>
           {displayServices.map((service) => (
             <Card key={service.id} className="flex flex-col h-full bg-white justify-between">
               <div>

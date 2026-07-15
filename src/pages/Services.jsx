@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import * as Icons from 'lucide-react';
 import { services } from '../data/services';
 import { SectionHeader } from '../components/ui/SectionHeader';
@@ -140,6 +140,26 @@ export function Services() {
             );
           })}
 
+        </div>
+      </section>
+
+      {/* 3. Single Page-Level CTA */}
+      <section className="py-14 bg-brand-bg border-t border-brand-border/40">
+        <div className="px-4 md:px-8 lg:px-16 max-w-3xl mx-auto text-center flex flex-col items-center gap-4">
+          <p className="text-xs font-bold tracking-widest text-brand-green uppercase font-body">Get Started</p>
+          <h2 className="text-2xl md:text-3xl font-bold font-display text-brand-black">
+            Ready to Work With Us?
+          </h2>
+          <p className="font-body text-sm text-brand-gray max-w-xl">
+            Tell us about your project — our team will review your requirements and respond with a technical proposal.
+          </p>
+          <Link
+            to="/consultation"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-green hover:bg-brand-green-hover text-white text-sm font-bold font-body rounded-lg transition-colors mt-2"
+          >
+            <Icons.Send size={15} />
+            Request a Proposal
+          </Link>
         </div>
       </section>
     </div>

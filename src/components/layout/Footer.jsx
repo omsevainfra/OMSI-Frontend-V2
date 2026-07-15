@@ -29,7 +29,7 @@ export function Footer() {
     { name: 'Services', path: '/services' },
     { name: 'Projects Portfolio', path: '/projects' },
     { name: 'Management Team', path: '/team' },
-    { name: 'Careers & Tenders', path: '/careers' },
+    { name: 'Careers', path: '/careers' },
     { name: 'Technical Blog', path: '/blog' },
     { name: 'Contact Us', path: '/contact' }
   ];

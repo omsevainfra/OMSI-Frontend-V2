@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Send, CheckCircle2, AlertCircle, Clock, Briefcase, Building2, Phone, Mail, User, FileText } from 'lucide-react';
 import { publicApi } from '../lib/publicApi';
 
 const ENQUIRY_TYPES = [
   'Project Consultancy',
+  'Topographic Survey',
+  'Traffic Simulation Study',
+  'Intersection Design',
+  'Road Safety Audit',
   'DPR Preparation',
   'Structural Design',
-  'Road Safety Audit',
   'Water Supply & Distribution',
   'Surveying & Mapping',
   'Construction Management',
@@ -31,10 +35,26 @@ const INITIAL = {
 };
 
 export function Consultation() {
+  const [searchParams] = useSearchParams();
   const [form, setForm]           = useState(INITIAL);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess]     = useState(false);
   const [error, setError]         = useState('');
+
+  // Pre-select enquiry type from ?subject query param (sent by service page CTAs)
+  useEffect(() => {
+    const subject = searchParams.get('subject');
+    if (subject) {
+      // Try to find a matching enquiry type (partial match, case-insensitive)
+      const match = ENQUIRY_TYPES.find(t =>
+        subject.toLowerCase().includes(t.toLowerCase()) ||
+        t.toLowerCase().includes(subject.replace('Inquiry: ', '').toLowerCase())
+      );
+      if (match) {
+        setForm(prev => ({ ...prev, enquiryType: match }));
+      }
+    }
+  }, [searchParams]);
 
   function handleChange(e) {
     const { name, value } = e.target;

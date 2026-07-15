@@ -40,10 +40,37 @@ export function Home() {
         </div>
       </section>
 
-      {/* 3. Services Overview Section */}
+      {/* 3. Core Services Preview Strip */}
+      <section className="py-10 bg-brand-bg border-b border-brand-border/40">
+        <div className="px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
+          <p className="text-xs font-bold tracking-widest text-brand-green uppercase mb-6 text-center font-body">Our Core Services</p>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: '🗺', label: 'Topographic Survey',   sub: 'DGPS, Total Station, Drone GIS',           href: '/services#topographic-survey'  },
+              { icon: '📊', label: 'Traffic Simulation',   sub: 'PTV Vissim · IRC SP41 · LOS Analysis',     href: '/services#traffic-simulation'   },
+              { icon: '🔀', label: 'Intersection Design',  sub: 'Swept path · IRC SP41 · MCGM Standards',   href: '/services#intersection-design'  },
+              { icon: '🛡', label: 'Road Safety Audit',    sub: 'IIT Roorkee Certified · IRC SP:88-2019',   href: '/services#road-safety-audit'    },
+            ].map(({ icon, label, sub, href }) => (
+              <Link
+                key={label}
+                to={href}
+                className="group flex flex-col items-center text-center gap-3 bg-white border border-brand-border rounded-xl p-5 hover:border-brand-green/50 hover:shadow-sm transition-all duration-200"
+              >
+                <span className="text-3xl">{icon}</span>
+                <div>
+                  <p className="font-display font-bold text-sm text-brand-black group-hover:text-brand-green transition-colors leading-snug">{label}</p>
+                  <p className="font-body text-[11px] text-brand-gray mt-0.5 leading-relaxed">{sub}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Services Overview Section */}
       <ServicesGrid limit={true} />
 
-      {/* 4. Featured Projects Section */}
+      {/* 5. Featured Projects Section */}
       <ProjectsGrid 
         limit={3} 
         interactiveFilters={true} 
@@ -51,7 +78,7 @@ export function Home() {
         initialStatus="Live"
       />
 
-      {/* 5. About Snapshot Section */}
+      {/* 6. About Snapshot Section */}
       <section className="py-16 md:py-24 bg-brand-bg/50 border-y border-brand-border/40">
         <div className="px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

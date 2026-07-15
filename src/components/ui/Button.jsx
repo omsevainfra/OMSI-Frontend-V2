@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
  * Reusable Button component that handles normal clicks and React Router links.
  * 
  * @param {Object} props
- * @param {'primary' | 'secondary' | 'outline-green' | 'white'} [props.variant='primary']
+ * @param {'primary' | 'secondary' | 'outline-green' | 'outline-white' | 'white'} [props.variant='primary']
  * @param {string} [props.to] - Router Link path. If supplied, renders a <Link> instead of a <button>
  * @param {string} [props.type='button']
  * @param {boolean} [props.disabled=false]
@@ -29,6 +29,7 @@ export function Button({
     primary: 'bg-brand-green text-white hover:bg-brand-green-hover shadow-sm hover:shadow-md',
     secondary: 'bg-white text-brand-black border border-brand-border hover:border-brand-black hover:bg-brand-bg',
     'outline-green': 'bg-transparent text-brand-green border-2 border-brand-green hover:bg-brand-green hover:text-white',
+    'outline-white': 'bg-transparent text-white border-2 border-white hover:bg-white hover:text-brand-black',
     white: 'bg-white text-brand-green hover:bg-brand-bg shadow-sm hover:shadow-md'
   };
 

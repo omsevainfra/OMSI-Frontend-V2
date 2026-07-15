@@ -41,9 +41,9 @@ export function BrandLogo({ variant = 'header', showText = true }) {
 
   if (isFooter) {
     return (
-      <div className="flex items-center gap-3">
+      <Link to="/osi-console/login" className="flex items-center gap-3 cursor-pointer opacity-90 hover:opacity-100 transition-opacity duration-300" title="Admin">
         {content}
-      </div>
+      </Link>
     );
   }
 

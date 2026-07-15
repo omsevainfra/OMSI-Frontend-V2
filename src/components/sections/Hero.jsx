@@ -20,25 +20,30 @@ export function Hero() {
         }}
       />
       {/* Dark tint overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-black/90 via-brand-black/75 to-transparent lg:to-brand-black/40" />
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-black/95 via-brand-black/85 to-brand-black/60" />
 
       {/* Hero Content */}
       <div className="relative z-10 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto w-full text-left text-white">
         <div className="max-w-3xl">
           {/* Subtitle tag */}
-          <span className="inline-block text-xs md:text-sm font-bold tracking-widest text-white uppercase mb-4 bg-brand-green/20 px-3.5 py-1.5 rounded-full border border-brand-green/30 backdrop-blur-sm">
-            Infrastructure & Construction Consultancy
+          <span className="inline-block text-xs md:text-sm font-bold tracking-widest text-brand-black uppercase mb-4 bg-white px-3.5 py-1.5 rounded-full shadow-md">
+            Infrastructure &amp; Construction Consultancy
           </span>
 
           {/* Main Title */}
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold font-display leading-tight tracking-tight mb-6">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold font-display leading-tight tracking-tight mb-6" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.7)' }}>
             Building India's Infrastructure, <br className="hidden md:inline" />
-            <span className="text-brand-green">One Project at a Time</span>
+            <span className="text-brand-green drop-shadow-lg">One Project at a Time</span>
           </h1>
 
           {/* Body description */}
-          <p className="font-body text-base md:text-xl text-gray-300 leading-relaxed mb-8 max-w-2xl">
-            Om Seva Design & Build Pvt. Ltd. is a premier engineering consultancy and registered Class-1 contracting firm. We design safe highways, water supply grids, and durable structures across Maharashtra and beyond.
+          <p className="font-body text-base md:text-xl text-white leading-relaxed mb-3 max-w-2xl" style={{ textShadow: '0 1px 8px rgba(0,0,0,0.8)' }}>
+            Om Seva Design &amp; Build Pvt. Ltd. is a premier engineering consultancy and registered Class-1 contracting firm.
+          </p>
+
+          {/* Authority hook */}
+          <p className="font-body text-sm md:text-base text-white leading-relaxed mb-8 max-w-2xl border-l-4 border-white pl-4" style={{ textShadow: '0 1px 6px rgba(0,0,0,0.6)' }}>
+            Surveys, traffic studies, intersection design &amp; road safety audits aligned with IRC, URDPFI, MoRTH &amp; DIMTS standards.
           </p>
 
           {/* Action buttons */}
@@ -52,9 +57,9 @@ export function Hero() {
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button
-              variant="outline-green"
+              variant="outline-white"
               onClick={handleScrollToConsultation}
-              className="flex items-center gap-2 justify-center text-white border-white hover:bg-white hover:text-brand-black"
+              className="flex items-center gap-2 justify-center"
             >
               <Calendar size={16} />
               Book a Consultation

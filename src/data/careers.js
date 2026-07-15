@@ -7,88 +7,64 @@ export const benefits = [
   {
     id: 2,
     title: "Nation-Building Impact",
-    description: "Contribute to vital public projects including water supply grids under Jal Jeevan Mission and major urban transport links."
+    description: "Contribute to vital public projects including topographic surveys, urban intersection designs, and road safety audits across Maharashtra."
   },
   {
     id: 3,
     title: "Advanced Engineering Tools",
-    description: "Gain hands-on expertise with industry-leading tools like WaterGEMS, PTV Vissim, ETABS, and STAAD Pro."
+    description: "Gain hands-on expertise with industry-leading tools like PTV Vissim, WaterGEMS, ETABS, and DGPS survey equipment."
   },
   {
     id: 4,
     title: "Collaborative Culture",
-    description: "Enjoy a flat organization structure where your technical designs and ideas are valued and implemented directly."
+    description: "Enjoy a flat organization structure where your technical designs and field findings are valued and implemented directly."
   }
 ];
 
 export const openPositions = [
   {
-    id: "senior-structural-designer",
-    title: "Senior Structural Designer",
-    department: "Structural Engineering",
-    location: "Mumbai",
+    id: "road-safety-auditor",
+    title: "Road Safety Auditor",
+    department: "Transportation Engineering",
+    location: "Mumbai / Field",
     type: "Full-time",
-    experience: "5+ Years",
+    experience: "4+ Years",
     requirements: [
-      "M.Tech in Structural Engineering or related field.",
-      "Expertise in ETABS, STAAD Pro, and SAFE software.",
-      "Experience design-checking bridge girders and multi-story structures.",
-      "Familiarity with Indian Standard (IS) and IRC design codes."
+      "B.Tech / M.Tech in Civil or Transportation Engineering.",
+      "Completion of an IRC/IIT-affiliated Road Safety Audit training programme (preferred).",
+      "Experience conducting Stage 1–5 Road Safety Audits per IRC SP:88-2019.",
+      "Proficiency in crash data analysis, black-spot identification, and VRU safety assessment.",
+      "Willingness to conduct day and night field inspections across Maharashtra."
     ]
   },
   {
-    id: "highway-design-engineer",
-    title: "Highway Design & Planning Engineer",
+    id: "traffic-simulation-engineer",
+    title: "Traffic Simulation Engineer",
     department: "Transportation Engineering",
     location: "Mumbai",
     type: "Full-time",
     experience: "3+ Years",
     requirements: [
-      "B.Tech/M.Tech in Civil / Transportation Engineering.",
-      "Working knowledge of Bentley OpenRoads, AutoCAD Civil 3D, or MXRoad.",
-      "Experience drafting geometric designs for intersections, alignments, and roundabouts.",
-      "Experience assisting in Road Safety Audits is a major plus."
+      "B.Tech / M.Tech in Civil / Transportation Engineering.",
+      "Hands-on experience with PTV Vissim or Aimsun for microscopic traffic simulation.",
+      "Proficiency in traffic volume count analysis, Level of Service (LOS) calculations per IRC SP41.",
+      "Experience preparing Traffic Impact Assessment (TIA) or intersection capacity study reports.",
+      "Familiarity with signal timing optimisation (Webster's formula or simulation-based iteration)."
     ]
   },
   {
-    id: "gis-mapping-land-surveyor",
-    title: "GIS Mapping & Land Surveyor",
+    id: "survey-gis-engineer",
+    title: "Survey & GIS Engineer",
     department: "Surveying & DPR",
-    location: "Nanded / Parbhani",
+    location: "Nanded / Parbhani / Field",
     type: "Contractual",
     experience: "2+ Years",
     requirements: [
-      "Diploma or Degree in Civil Engineering / Surveying.",
-      "Proficiency in operating DGPS, Total Stations, and GIS mapping tools.",
-      "Ability to conduct topographic surveys and process contour maps.",
-      "Willingness to travel for extensive field surveys across Maharashtra."
+      "Diploma or Degree in Civil Engineering / Surveying / Geomatics.",
+      "Proficiency in DGPS, Total Stations, and drone/UAV photogrammetric surveys.",
+      "Experience producing topographic survey drawings in AutoCAD and georeferenced shapefiles.",
+      "Knowledge of DEM generation, contour mapping, and corridor cross-section preparation.",
+      "Willingness to travel for extensive field surveys; north-referencing and datum control experience is a plus."
     ]
-  }
-];
-
-export const activeTenders = [
-  {
-    id: "tender-001",
-    title: "Consultancy Services for DPR Preparation of Rural Water Supply Schemes",
-    authority: "Maharashtra Jeevan Pradhikaran (MJP), Nanded Division",
-    deadline: "2026-06-15",
-    refNumber: "MJP/ND/DPR-WATER/2026/04",
-    documentUrl: "#"
-  },
-  {
-    id: "tender-002",
-    title: "Stage-Wise Road Safety Audit of State Highway Corridors (120 km Group)",
-    authority: "Public Works Department (PWD), Aurangabad Region",
-    deadline: "2026-06-28",
-    refNumber: "PWD/AUR/RSA-SH/2026/12",
-    documentUrl: "#"
-  },
-  {
-    id: "tender-003",
-    title: "Third Party Quality Assurance (TPQA) for Elevated Storage Reservoirs (ESR)",
-    authority: "Zilla Parishad Parbhani, Water & Sanitation Dept",
-    deadline: "2026-07-02",
-    refNumber: "ZP-PAR/JJM-TPQA/2026/09",
-    documentUrl: "#"
   }
 ];

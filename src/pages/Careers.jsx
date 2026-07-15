@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FileText, Briefcase, Award, ArrowUpRight, Download, Send, CheckCircle2, ChevronDown, ChevronUp, Search, Loader2, AlertCircle } from 'lucide-react';
-import { benefits, activeTenders } from '../data/careers';
+import { FileText, Briefcase, Award, ArrowUpRight, Send, CheckCircle2, ChevronDown, ChevronUp, Search, Loader2, AlertCircle } from 'lucide-react';
+import { benefits } from '../data/careers';
 import { SectionHeader } from '../components/ui/SectionHeader';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
@@ -31,7 +31,7 @@ export function Careers() {
       if (department) params.set('department', department);
       if (employmentType) params.set('employmentType', employmentType);
       if (location) params.set('location', location);
-      const res = await publicApi.get(`/jobs/getJobs?${params}`);
+      const res = await publicApi.get(`/job/getJobs?${params}`);
       setJobs(res.data?.data?.jobs || []);
       setPagination(res.data?.data?.pagination || { page: 1, totalPages: 1, totalJobs: 0 });
     } catch (err) {
@@ -283,53 +283,6 @@ export function Careers() {
               </button>
             </div>
           )}
-        </div>
-      </section>
-
-      {/* 4. Active Tenders Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
-          <SectionHeader
-            tag="Contracts"
-            title="Active Infrastructure Tenders"
-            subtitle="We bid for and collaborate on public utilities design schemes. Registered vendors and authority executives can find active tenders here."
-          />
-
-          <div className="max-w-4xl mx-auto flex flex-col gap-6">
-            {activeTenders.length === 0 ? (
-              <div className="text-center py-10 border border-dashed border-brand-border rounded-lg bg-brand-bg">
-                <p className="font-body text-brand-gray text-sm">No active tenders listed at this time. Please check back later.</p>
-              </div>
-            ) : (
-              activeTenders.map((tender) => (
-                <div
-                  key={tender.id}
-                  className="bg-brand-bg/40 border border-brand-border/70 rounded-xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-brand-green/30 hover:bg-white hover:shadow-sm transition-all duration-300"
-                >
-                  <div className="flex flex-col gap-1.5 max-w-2xl">
-                    <span className="text-[10px] font-bold text-brand-green uppercase tracking-widest font-body">Ref: {tender.refNumber}</span>
-                    <h4 className="font-display font-bold text-base text-brand-black leading-snug">{tender.title}</h4>
-                    <span className="font-body text-xs text-brand-gray">Authority: {tender.authority}</span>
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row md:flex-col items-start md:items-end justify-between md:justify-center gap-4 shrink-0 border-t md:border-t-0 border-brand-border/60 pt-4 md:pt-0">
-                    <div className="flex flex-col">
-                      <span className="text-[9px] font-bold text-brand-gray uppercase tracking-wider font-body md:text-right">Submission Deadline</span>
-                      <span className="font-body text-xs font-bold text-brand-black md:text-right">{tender.deadline}</span>
-                    </div>
-
-                    <a
-                      href={tender.documentUrl}
-                      className="inline-flex items-center gap-1.5 font-body text-xs font-bold text-brand-green hover:text-brand-green-hover"
-                    >
-                      <Download size={14} />
-                      Download Bid Scoping (.PDF)
-                    </a>
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
         </div>
       </section>
 
